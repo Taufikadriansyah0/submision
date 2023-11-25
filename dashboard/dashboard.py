@@ -83,13 +83,13 @@ end_date = st.sidebar.date_input("Pilih Tanggal Akhir", pd.to_datetime("2012-12-
 # Filter dataset berdasarkan tanggal
 if selected_dataset == 'day_df':
     day_df['dteday'] = pd.to_datetime(day_df['dteday']).dt.date  # Mengubah datetime menjadi date
-    filtered_df = day_df[(day_df['dteday'] >= start_date) & (day_df['dteday'] <= end_date)]
+    filtered_day_df = day_df[(day_df['dteday'] >= start_date) & (day_df['dteday'] <= end_date)]
     st.header('Visualisasi Data Harian')
     plot_daily_and_monthly_counts(filtered_df)
     plot_seasonal_counts(filtered_df)
 else:
     hour_df['dteday'] = pd.to_datetime(hour_df['dteday']).dt.date  # Mengubah datetime menjadi date
-    filtered_df = hour_df[(hour_df['dteday'] >= start_date) & (hour_df['dteday'] <= end_date)]
+    filtered_hour_df = hour_df[(hour_df['dteday'] >= start_date) & (hour_df['dteday'] <= end_date)]
     st.header('Visualisasi Data Per Jam')
-    plot_hourly_counts(filtered_df)
-    plot_monthly_counts(filtered_df)
+    plot_hourly_counts(filtered_hour_df)
+    plot_monthly_counts(filtered_day_df)
