@@ -1,0 +1,8 @@
+# Library utama
+pandas==1.3.3
+numpy==1.21.2
+matplotlib==3.4.3
+seaborn==0.11.2
+
+# Library untuk interaksi dengan Streamlit
+streamlit==1.18.0
