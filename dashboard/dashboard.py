@@ -10,14 +10,12 @@ hour_df = pd.read_csv("dashboard/dataHour.csv")
 
 # Fungsi untuk membuat visualisasi per bulan
 def plot_monthly_counts(df):
-    st.header('Peminjaman Sepeda per Bulan dengan Rata-rata Bergerak')
     df['dteday'] = pd.to_datetime(df['dteday'])
     df['month'] = df['dteday'].dt.to_period('M')
     monthly_counts = df.groupby('month')['cnt'].sum()
 
     plt.figure(figsize=(12, 6))
     plt.plot(monthly_counts.index.to_timestamp().strftime('%Y-%m'), monthly_counts.values, label='Total Peminjaman Sepeda')
-    plt.plot(monthly_counts.index.astype(str), monthly_counts.rolling(window=12).mean(), label='Rata-rata Bergerak (12 Bulan)', linestyle='--', color='orange')
     plt.title('Peminjaman Sepeda per Bulan dengan Rata-rata Bergerak')
     plt.xlabel('Bulan')
     plt.ylabel('Total Peminjaman')
