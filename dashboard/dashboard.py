@@ -8,22 +8,6 @@ sns.set(style='dark')
 day_df = pd.read_csv("dashboard/dataDay.csv")
 hour_df = pd.read_csv("dashboard/dataHour.csv")
 
-# Fungsi untuk membuat visualisasi per bulan
-def plot_monthly_counts(df):
-    st.header('Peminjaman Sepeda per Bulan dengan Rata-rata Bergerak')
-    df['dteday'] = pd.to_datetime(df['dteday'])
-    df['month'] = df['dteday'].dt.to_period('M')
-    monthly_counts = df.groupby('month')['cnt'].sum()
-
-    plt.figure(figsize=(12, 6))
-    plt.plot(monthly_counts.index.astype(str), monthly_counts.values, label='Total Peminjaman Sepeda')
-    plt.plot(monthly_counts.index.astype(str), monthly_counts.rolling(window=12).mean(), label='Rata-rata Bergerak (12 Bulan)', linestyle='--', color='orange')
-    plt.title('Peminjaman Sepeda per Bulan dengan Rata-rata Bergerak')
-    plt.xlabel('Bulan')
-    plt.ylabel('Total Peminjaman')
-    plt.xticks(rotation=45)
-    plt.legend()
-    st.pyplot(plt)
 
 # Fungsi untuk membuat visualisasi per jam
 def plot_hourly_counts(df):
@@ -92,5 +76,4 @@ else:
     filtered_df = hour_df[(hour_df['dteday'] >= start_date) & (hour_df['dteday'] <= end_date)]
     st.header('Visualisasi Data Per Jam')
     plot_hourly_counts(filtered_df)
-    plot_monthly_counts(filtered_df)
 
