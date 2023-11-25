@@ -92,4 +92,5 @@ else:
     filtered_df = hour_df[(hour_df['dteday'] >= start_date) & (hour_df['dteday'] <= end_date)]
     st.header('Visualisasi Data Per Jam')
     plot_hourly_counts(filtered_df)
+    plot_monthly_counts(filtered_df)
 
