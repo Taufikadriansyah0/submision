@@ -5,3 +5,6 @@ pip install streamlit
 
 <!-- run  -->
 streamlit run e:/submisiion/dashboard/dashboard.py
+
+tautan
+https://submision.streamlit.app/
