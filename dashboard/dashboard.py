@@ -6,7 +6,7 @@ import streamlit as st
 sns.set(style='dark')
 
 day_df = pd.read_csv("dashboard/dataDay.csv")
-hour_df = pd.read_csv("dashboard/datahour.csv")
+hour_df = pd.read_csv("dashboard/dataHour.csv")
 
 # Fungsi untuk membuat visualisasi per bulan
 def plot_monthly_counts(df):
